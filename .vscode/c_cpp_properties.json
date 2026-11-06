@@ -1,0 +1,5 @@
+{
+    "version": 4,
+    "enableConfigurationSquiggles": true,
+    "configurations": [{ "name": "#### _iROM_RH850_U2A_SK", "compilerPath": "C:/HighTec/toolchains/v850/v11.0.0/bin/clang.exe", "compileCommands": "${workspaceFolder}/_iROM_RH850_U2A_SK/compile_commands.json" }]
+}

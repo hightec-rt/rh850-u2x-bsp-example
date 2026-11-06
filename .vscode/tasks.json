@@ -1,0 +1,190 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "#### [ Active Config ] # Build",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', ('--compile-commands-dir=' + ('${command:cpptools.activeConfigName}' -replace '^#### ', '')))) }; make -j8 -s -f makefile -C \"('${command:cpptools.activeConfigName}' -replace '^#### ', '')\" build"
+            },
+            "linux": {
+                "command": "sed -i \"s|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=$(echo \"${command:cpptools.activeConfigName}\" | sed \"s/^#### //\")|\" .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"$(echo '${command:cpptools.activeConfigName}' | sed 's/^#### //')\" build"
+            },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ Active Config ] # ReBuild",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', ('--compile-commands-dir=' + ('${command:cpptools.activeConfigName}' -replace '^#### ', '')))) }; make -j8 -s -f makefile -C \"('${command:cpptools.activeConfigName}' -replace '^#### ', '')\" rebuild"
+            },
+            "linux": {
+                "command": "sed -i \"s|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=$(echo \"${command:cpptools.activeConfigName}\" | sed \"s/^#### //\")|\" .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"$(echo '${command:cpptools.activeConfigName}' | sed 's/^#### //')\" rebuild"
+            },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ Active Config ] # Install",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', ('--compile-commands-dir=' + ('${command:cpptools.activeConfigName}' -replace '^#### ', '')))) }; make -j8 -s -f makefile -C \"('${command:cpptools.activeConfigName}' -replace '^#### ', '')\" install"
+            },
+            "linux": {
+                "command": "sed -i \"s|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=$(echo \"${command:cpptools.activeConfigName}\" | sed \"s/^#### //\")|\" .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"$(echo '${command:cpptools.activeConfigName}' | sed 's/^#### //')\" install"
+            },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ Active Config ] # ReInstall",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', ('--compile-commands-dir=' + ('${command:cpptools.activeConfigName}' -replace '^#### ', '')))) }; make -j8 -s -f makefile -C \"('${command:cpptools.activeConfigName}' -replace '^#### ', '')\" reinstall"
+            },
+            "linux": {
+                "command": "sed -i \"s|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=$(echo \"${command:cpptools.activeConfigName}\" | sed \"s/^#### //\")|\" .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"$(echo '${command:cpptools.activeConfigName}' | sed 's/^#### //')\" reinstall"
+            },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ Active Config ] # Clean",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', ('--compile-commands-dir=' + ('${command:cpptools.activeConfigName}' -replace '^#### ', '')))) }; make -j8 -s -f makefile -C \"('${command:cpptools.activeConfigName}' -replace '^#### ', '')\" clean"
+            },
+            "linux": {
+                "command": "sed -i \"s|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=$(echo \"${command:cpptools.activeConfigName}\" | sed \"s/^#### //\")|\" .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"$(echo '${command:cpptools.activeConfigName}' | sed 's/^#### //')\" clean"
+            },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ All Configs ] # Build",
+            "dependsOn": ["#### _iROM_RH850_U2A_SK # Build"],
+            "dependsOrder": "sequence",
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ All Configs ] # ReBuild",
+            "dependsOn": ["#### [ All Configs ] # Clean", "#### [ All Configs ] # Build"],
+            "dependsOrder": "sequence",
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ All Configs ] # Install",
+            "dependsOn": ["#### _iROM_RH850_U2A_SK # Install"],
+            "dependsOrder": "sequence",
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ All Configs ] # ReInstall",
+            "dependsOn": ["#### [ All Configs ] # Clean", "#### [ All Configs ] # Install"],
+            "dependsOrder": "sequence",
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### [ All Configs ] # Clean",
+            "dependsOn": ["#### _iROM_RH850_U2A_SK # Clean"],
+            "dependsOrder": "sequence",
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### _iROM_RH850_U2A_SK # Build",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', '--compile-commands-dir=_iROM_RH850_U2A_SK')) }; make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" build"
+            },
+            "linux": { "command": "sed -i 's|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=_iROM_RH850_U2A_SK|' .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" build" },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### _iROM_RH850_U2A_SK # ReBuild",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', '--compile-commands-dir=_iROM_RH850_U2A_SK')) }; make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" rebuild"
+            },
+            "linux": { "command": "sed -i 's|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=_iROM_RH850_U2A_SK|' .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" rebuild" },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### _iROM_RH850_U2A_SK # Install",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', '--compile-commands-dir=_iROM_RH850_U2A_SK')) }; make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" install"
+            },
+            "linux": { "command": "sed -i 's|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=_iROM_RH850_U2A_SK|' .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" install" },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### _iROM_RH850_U2A_SK # ReInstall",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', '--compile-commands-dir=_iROM_RH850_U2A_SK')) }; make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" reinstall"
+            },
+            "linux": { "command": "sed -i 's|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=_iROM_RH850_U2A_SK|' .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" reinstall" },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        },
+        {
+            "label": "#### _iROM_RH850_U2A_SK # Clean",
+            "type": "shell",
+            "windows": {
+                "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-NoLogo", "-NonInteractive"] } },
+                "command": "if (Test-Path .vscode/settings.json) { [IO.File]::WriteAllText((Resolve-Path .vscode/settings.json).Path, ([IO.File]::ReadAllText((Resolve-Path .vscode/settings.json).Path) -creplace '--compile-commands-dir=[^\\x22]*', '--compile-commands-dir=_iROM_RH850_U2A_SK')) }; make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" clean"
+            },
+            "linux": { "command": "sed -i 's|--compile-commands-dir=[^\\x22]*|--compile-commands-dir=_iROM_RH850_U2A_SK|' .vscode/settings.json 2>/dev/null || true && make -j8 -s -f makefile -C \"_iROM_RH850_U2A_SK\" clean" },
+            "group": { "kind": "build" },
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": { "base": "$gcc", "fileLocation": ["absolute"] },
+            "presentation": { "showReuseMessage": false, "echo": false, "clear": false, "panel": "shared", "focus": true, "close": false }
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "displayName": "RH850 U2x BSP example",
+    "abstract": "A BSP example is a small functional project designed to simplify an evaluation phase of the RH850 U2x microcontrollers. It comes with necessary low-level functions like a startup code, a minimalistic hardware abstraction and predefined memory partitioning. On top of this low-level implementation, it provides a reference application code running on all uC cores. This example variant supports the Tricore LLVM toolchain build system",
+    "device": "RH850 U2x",
+    "tags": ["example", "renesas", "rh850", "u2x", "u2a", "bsp", "LLVM"],
+    "contentType": "ECLIPSE_GENPRJ_STD"
+}

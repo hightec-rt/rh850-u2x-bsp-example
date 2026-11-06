@@ -1,0 +1,6 @@
+{
+    "clangd.path": "C:/HighTec/toolchains/v850/v11.0.0/bin/clangd.exe",
+    "clangd.arguments": ["--query-driver=C:/HighTec/toolchains/v850/v11.0.0/bin/*", "--compile-commands-dir=_iROM_RH850_U2A_SK"],
+    "clangd.onConfigChanged": "restart",
+    "clangd.onConfigChangedForceEnable": true
+}
